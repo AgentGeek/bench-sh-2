@@ -162,7 +162,7 @@ gbench () {
 	echo "Note: The benchmark might not always work (eg: missing dependencies)." | tee -a $HOME/bench.log
 	echo "Failures are highly possible. We're using Geekbench for this test." | tee -a $HOME/bench.log
 	echo "" | tee -a $HOME/bench.log
-        gb_page=http://www.primatelabs.com/geekbench/download/linux/
+        gb_page=http://www.geekbench.com/download/linux/
         gb_dl=$(wget -qO - $gb_page | \
                  sed -n 's/.*\(https\?:[^:]*\.tar\.gz\).*/\1/p')
         gb_noext=${gb_dl##*/}
