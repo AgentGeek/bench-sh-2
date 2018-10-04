@@ -162,7 +162,7 @@ gbench () {
 	echo "Note: The benchmark might not always work (eg: missing dependencies)." | tee -a $HOME/bench.log
 	echo "Failures are highly possible. We're using Geekbench for this test." | tee -a $HOME/bench.log
 	echo "" | tee -a $HOME/bench.log
-        gb_page=http://www.geekbench.com/geekbench3/download/linux/
+        gb_page=http://www.geekbench.com/download/linux
         gb_dl=$(wget -qO - $gb_page | \
                  sed -n 's/.*\(https\?:[^:]*\.tar\.gz\).*/\1/p')
         gb_noext=${gb_dl##*/}
@@ -170,7 +170,7 @@ gbench () {
         gb_name=${gb_noext//-/ }
 	echo "File is located at $gb_dl" | tee -a $HOME/bench.log
 	echo "Downloading and extracting $gb_name" | tee -a $HOME/bench.log
-        wget -qO - "$gb_dl" | tar xzv 2>&1 >/dev/null
+        wget -qO - "$gb_dl" | tar xzvf 2>&1 >/dev/null
 	echo "" | tee -a $HOME/bench.log
 	echo "Starting $gb_name" | tee -a $HOME/bench.log
 	echo "The system benchmark may take a while." | tee -a $HOME/bench.log
@@ -179,7 +179,7 @@ gbench () {
 	echo "" >> $HOME/bench.log
 	echo "--- Geekbench Results ---" >> $HOME/bench.log
 	sleep 2
-	$HOME/dist/$gb_noext/geekbench_x86_32 >> $HOME/bench.log
+	$HOME/dist/$gb_noext/geekbench4 >> $HOME/bench.log
 	echo "--- Geekbench Results End ---" >> $HOME/bench.log
 	echo "" >> $HOME/bench.log
 	echo "Finished. Removing Geekbench files" | tee -a $HOME/bench.log
