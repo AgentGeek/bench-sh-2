@@ -234,6 +234,8 @@ case $1 in
 		sysinfo; speedtest4; speedtest6; iotest; gbench;;
 	'-h' )
 		hlp;;
+	'-gb' )
+		gbench;;
 	*)
 		sysinfo; speedtest4; iotest;;
 esac
