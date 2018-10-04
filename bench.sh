@@ -179,7 +179,8 @@ gbench () {
 	echo "" >> $HOME/bench.log
 	echo "--- Geekbench Results ---" >> $HOME/bench.log
 	sleep 2
-	$HOME/$gb_noext/geekbench4 >> $HOME/bench.log
+	cd $HOME/$gb_noext/ >/dev/null
+	./geekbench4 >> $HOME/bench.log
 	echo "--- Geekbench Results End ---" >> $HOME/bench.log
 	echo "" >> $HOME/bench.log
 	echo "Finished. Removing Geekbench files" | tee -a $HOME/bench.log
