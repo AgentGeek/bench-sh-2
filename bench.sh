@@ -166,14 +166,13 @@ gbench () {
         gb_dl=$(wget -qO - $gb_page | \
                  sed -n 's/.*\(https\?:[^:]*\.tar\.gz\).*/\1/p')
         gb_noext=${gb_dl##*/}
-	gb_file=${gb_dl##*/}
         gb_noext=${gb_noext%.tar.gz} 
         gb_name=${gb_noext//-/ }
 	echo "File is located at $gb_dl" | tee -a $HOME/bench.log
 	echo "Downloading and extracting $gb_name" | tee -a $HOME/bench.log
         wget $gb_dl 2>&1 >/dev/null
-	tar -xzvf $gb_file >/dev/null
-	rm -rf $gb_file >/dev/null
+	tar -xzvf $gb_noext* >/dev/null
+	rm -rf $gb_noext*.tar.gz >/dev/null
 	echo "" | tee -a $HOME/bench.log
 	echo "Starting $gb_name" | tee -a $HOME/bench.log
 	echo "The system benchmark may take a while." | tee -a $HOME/bench.log
