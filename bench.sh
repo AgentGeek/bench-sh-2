@@ -170,7 +170,7 @@ gbench () {
         gb_name=${gb_noext//-/ }
 	echo "File is located at $gb_dl" | tee -a $HOME/bench.log
 	echo "Downloading and extracting $gb_name" | tee -a $HOME/bench.log
-        wget -qO - "$gb_dl" | tar -xzvf- >/dev/null
+        wget -qO - "$gb_dl" | tar xzv 2>&1 >/dev/null
 	echo "" | tee -a $HOME/bench.log
 	echo "Starting $gb_name" | tee -a $HOME/bench.log
 	echo "The system benchmark may take a while." | tee -a $HOME/bench.log
